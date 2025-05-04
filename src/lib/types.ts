@@ -5,15 +5,16 @@ export interface TestQuestion {
 }
 
 export interface TestResult {
+  type: string;
   title: string;
   description: string;
-  recommendation: string;
-  imageUrl: string;
+  analyses: string[];
 }
 
 export interface ContactForm {
   firstName: string;
   lastName: string;
+  middleName: string;
   phone: string;
 }
 
@@ -21,4 +22,5 @@ export interface TestSubmission {
   answers: number[];
   result: TestResult;
   contact: ContactForm;
+  date: string;
 }
