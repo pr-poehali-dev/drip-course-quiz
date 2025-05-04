@@ -5,16 +5,20 @@ export interface TestQuestion {
 }
 
 export interface TestResult {
-  type: 'detox' | 'weight-loss' | 'energy';
   title: string;
   description: string;
-  analyses: string[];
+  recommendation: string;
+  imageUrl: string;
 }
 
-export interface UserData {
-  name: string;
-  patronymic: string;
+export interface ContactForm {
+  firstName: string;
+  lastName: string;
   phone: string;
-  result: TestResult;
+}
+
+export interface TestSubmission {
   answers: number[];
+  result: TestResult;
+  contact: ContactForm;
 }
