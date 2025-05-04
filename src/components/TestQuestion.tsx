@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { TestQuestion as ITestQuestion } from '@/lib/types';
@@ -21,9 +21,15 @@ const TestQuestion = ({
 }: TestQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   
+  // Сбрасываем выбранный вариант при изменении вопроса
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [question, currentQuestionIndex]);
+  
   const handleSubmit = () => {
     if (selectedOption !== null) {
       onAnswer(selectedOption);
+      // Даже если сбрасываем через useEffect, дополнительно сбрасываем здесь для надежности
       setSelectedOption(null);
     }
   };
