@@ -78,7 +78,11 @@ const Index = () => {
             <PrivacyAgreement onAgree={handlePrivacyAgree} />
           </>
         ) : (
+          // Добавляем key атрибут с индексом текущего вопроса
+          // Это заставит React создавать новый экземпляр компонента
+          // при каждом изменении индекса вопроса
           <TestQuestion
+            key={currentQuestionIndex}
             question={questions[currentQuestionIndex]}
             currentQuestionIndex={currentQuestionIndex}
             totalQuestions={questions.length}
